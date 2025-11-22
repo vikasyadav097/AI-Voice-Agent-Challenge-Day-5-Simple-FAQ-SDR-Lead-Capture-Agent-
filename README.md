@@ -1,10 +1,23 @@
-# AI Voice Agents Challenge - Day 1 Complete ✅
+# Murf AI Voice Agents Challenge - Day 2 Complete ⚡
 
-Welcome to my **Murf AI Voice Agents Challenge** journey!
+Welcome to my **Murf AI Voice Agents Challenge** Day 2 submission!
 
-## 🎯 Day 1 Task - Get Your Starter Voice Agent Running
+This repository contains my implementation of the **Coffee Shop Barista Agent** with real-time HTML beverage visualization - the advanced challenge for Day 2.
 
-**Status: ✅ Completed**
+## 🎯 Challenge Task
+
+**Day 2 Objective**: Create a coffee shop barista agent that can take voice orders and show a neat text summary.
+
+### Primary Goal ✅
+- Create order state management system with JSON saving
+- Implement function tools for collecting order information
+- Save completed orders to JSON files
+
+### Advanced Challenge ✅
+- Build HTML-based beverage visualization system
+- Dynamic cup size rendering based on order
+- Visual extras (whipped cream on top)
+- Real-time updates as order is placed
 
 ### What I Accomplished:
 
@@ -16,6 +29,36 @@ Welcome to my **Murf AI Voice Agents Challenge** journey!
 ✅ Had my first real-time voice conversation with the AI agent
 ✅ Pushed code to GitHub repository
 
+## 🎯 Day 2 Task - Coffee Shop Barista Agent
+
+**Status: ✅ Complete (including Advanced Challenge)**
+
+### What I Built:
+
+✅ Created "Brew" - a friendly barista persona at Murf's Coffee House
+✅ Implemented order state management system
+✅ Built 6 function tools for order collection:
+  - `set_drink_type()` - Capture coffee type
+  - `set_size()` - Set drink size (small/medium/large)
+  - `set_milk()` - Choose milk preference
+  - `add_extra()` - Add extras like whipped cream, syrups, etc.
+  - `set_customer_name()` - Get customer name
+  - `complete_order()` - Validate and save order to JSON
+✅ Orders automatically saved to `backend/orders/` directory with timestamp
+✅ Agent asks clarifying questions to fill all required fields
+✅ **Advanced Challenge: Real-time HTML Beverage Visualization**
+  - Dynamic coffee cup rendering that updates in real-time
+  - Cup size changes based on order (small/medium/large)
+  - Visual whipped cream topping when ordered
+  - Animated drink filling effect
+  - Live order details display
+  - Completion status indicator
+  - Data streaming via LiveKit data channels
+✅ Order history display during session
+✅ Compact UI that doesn't obstruct conversation
+✅ Starbucks-inspired green theme
+✅ Persistent beverage display until session ends
+
 ## About the Challenge
 
 Building **10 AI Voice Agents over 10 Days** using **Murf Falcon** – the consistently fastest TTS API!
@@ -24,7 +67,7 @@ This is Day 1 of the **#MurfAIVoiceAgentsChallenge** #10DaysofAIVoiceAgents
 
 ## Repository Structure
 
-This is a **monorepo** that contains both the backend and frontend for building voice agent applications. It's designed to be your starting point for each day's challenge task.
+This is a **monorepo** that contains both the backend and frontend for building voice agent applications.
 
 ```
 ten-days-of-voice-agents-2025/
@@ -48,8 +91,6 @@ The backend is based on [LiveKit's agent-starter-python](https://github.com/live
 - Complete test suite with evaluation framework
 - Production-ready Dockerfile
 
-[→ Backend Documentation](./backend/README.md)
-
 ### Frontend
 
 The frontend is based on [LiveKit's agent-starter-react](https://github.com/livekit-examples/agent-starter-react), providing a modern, beautiful UI for interacting with your voice agents.
@@ -62,8 +103,8 @@ The frontend is based on [LiveKit's agent-starter-react](https://github.com/live
 - Audio visualization and level monitoring
 - Light/dark theme switching
 - Highly customizable branding and UI
-
-[→ Frontend Documentation](./frontend/README.md)
+- Real-time beverage visualization with animations
+- Order history display
 
 ## Quick Start
 
@@ -82,11 +123,11 @@ Make sure you have the following installed:
 - **GOOGLE_API_KEY** - Get from [Google AI Studio](https://makersuite.google.com/app/apikey)
 - **DEEPGRAM_API_KEY** - Get from [Deepgram Console](https://console.deepgram.com/)
 
-### 1. Clone the Repository
+### 1. Clone This Repository
 
 ```bash
-git clone https://github.com/GhanshyamJha05/first_day_Task-Murf-AI-.git
-cd first_day_Task-Murf-AI-
+git clone https://github.com/GhanshyamJha05/Second_day_task_murfAI.git
+cd Second_day_task_murfAI
 ```
 
 ### 2. Backend Setup
@@ -168,10 +209,31 @@ pnpm dev
 
 **Open http://localhost:3000 in your browser!** 🎉
 
+## 🎨 Features
+
+### Voice Agent Features
+- Natural conversation with Murf's ultra-fast Falcon TTS
+- Google's Gemini LLM for intelligent responses
+- Deepgram STT for accurate speech recognition
+- Multi-part command handling (e.g., "large latte with oat milk")
+- Order state management with validation
+- JSON order saving with timestamps
+
+### Visual Features
+- Real-time HTML beverage visualization
+- Dynamic cup sizing (small/medium/large)
+- Animated steam effects
+- Whipped cream visualization
+- Liquid filling animations
+- Starbucks-inspired green theme
+- Order details display
+- Order history during session
+- Compact UI that doesn't obstruct conversation
+
 ## 📅 Challenge Progress
 
-- **Day 1**: ✅ Get Your Starter Voice Agent Running - **COMPLETED**
-- **Day 2**: 🔜 Coming soon...
+- **Day 1**: ✅ Get Your Starter Voice Agent Running - [Repository Link](https://github.com/GhanshyamJha05/first_day_Task-Murf-AI-)
+- **Day 2**: ✅ Coffee Shop Barista Agent (+ Advanced Challenge) - **THIS REPOSITORY**
 - **Day 3**: 🔜 Coming soon...
 - **Day 4**: 🔜 Coming soon...
 - **Day 5**: 🔜 Coming soon...
@@ -191,8 +253,8 @@ pnpm dev
 ## 🛠️ Tech Stack
 
 - **Backend**: Python 3.11, LiveKit Agents, Murf Falcon TTS, Google Gemini LLM, Deepgram STT
-- **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS
-- **Real-time Communication**: LiveKit Server
+- **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS, Framer Motion
+- **Real-time Communication**: LiveKit Server with Data Channels
 - **Package Managers**: uv (Python), pnpm (Node.js)
 
 ## 📝 Notes
