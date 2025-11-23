@@ -1,23 +1,39 @@
-# Murf AI Voice Agents Challenge - Day 2 Complete ⚡
+# Murf AI Voice Agents Challenge - Day 3 Complete ⚡
 
-Welcome to my **Murf AI Voice Agents Challenge** Day 2 submission!
+Welcome to my **Murf AI Voice Agents Challenge** Day 3 submission!
 
-This repository contains my implementation of the **Coffee Shop Barista Agent** with real-time HTML beverage visualization - the advanced challenge for Day 2.
+This repository contains my implementation of the **Health & Wellness Voice Companion** - a supportive daily check-in agent with JSON persistence.
 
 ## 🎯 Challenge Task
 
-**Day 2 Objective**: Create a coffee shop barista agent that can take voice orders and show a neat text summary.
+**Day 3 Objective**: Build a health and wellness voice companion that conducts daily check-ins and stores data in JSON.
 
 ### Primary Goal ✅
-- Create order state management system with JSON saving
-- Implement function tools for collecting order information
-- Save completed orders to JSON files
+- Clear, grounded system prompt for wellness companion
+- Daily check-ins via voice about mood, energy, and goals
+- JSON file persistence for all check-ins
+- Reference past data in new conversations
 
-### Advanced Challenge ✅
-- Build HTML-based beverage visualization system
-- Dynamic cup size rendering based on order
-- Visual extras (whipped cream on top)
-- Real-time updates as order is placed
+### What I Built:
+
+✅ Supportive, non-medical wellness companion
+✅ Daily check-in conversation flow:
+  - Mood assessment
+  - Energy level check
+  - Stress/concerns inquiry
+  - 1-3 daily objectives/intentions
+  - Simple, actionable advice
+  - Recap and confirmation
+✅ JSON-based persistence (`wellness_log.json`)
+✅ Previous check-in context loading
+✅ Natural reference to past sessions
+✅ 5 function tools for data collection:
+  - `set_mood()` - Record current mood
+  - `set_energy()` - Record energy level
+  - `set_stress()` - Note stress/concerns
+  - `add_objective()` - Add daily goals
+  - `add_note()` - Additional reflections
+  - `complete_checkin()` - Save to JSON log
 
 ### What I Accomplished:
 
@@ -126,8 +142,8 @@ Make sure you have the following installed:
 ### 1. Clone This Repository
 
 ```bash
-git clone https://github.com/GhanshyamJha05/Second_day_task_murfAI.git
-cd Second_day_task_murfAI
+git clone https://github.com/GhanshyamJha05/Day3_Wellness_Companion_MurfAI.git
+cd Day3_Wellness_Companion_MurfAI
 ```
 
 ### 2. Backend Setup
@@ -213,28 +229,38 @@ pnpm dev
 
 ### Voice Agent Features
 - Natural conversation with Murf's ultra-fast Falcon TTS
-- Google's Gemini LLM for intelligent responses
+- Google's Gemini LLM for intelligent, empathetic responses
 - Deepgram STT for accurate speech recognition
-- Multi-part command handling (e.g., "large latte with oat milk")
-- Order state management with validation
-- JSON order saving with timestamps
+- Supportive, grounded wellness check-ins
+- Non-medical, non-diagnostic approach
+- JSON-based data persistence
+- Context-aware conversations referencing previous check-ins
 
-### Visual Features
-- Real-time HTML beverage visualization
-- Dynamic cup sizing (small/medium/large)
-- Animated steam effects
-- Whipped cream visualization
-- Liquid filling animations
-- Starbucks-inspired green theme
-- Order details display
-- Order history during session
-- Compact UI that doesn't obstruct conversation
+### Wellness Check-in Flow
+1. **Greeting** - Warm welcome with reference to previous session
+2. **Mood Assessment** - "How are you feeling today?"
+3. **Energy Check** - "What's your energy level like?"
+4. **Stress Inquiry** - "Anything stressing you out?"
+5. **Daily Objectives** - "What 1-3 things would you like to accomplish?"
+6. **Practical Advice** - Small, actionable suggestions
+7. **Recap & Confirmation** - Summary of mood, energy, and goals
+8. **Data Persistence** - Save to `wellness_log.json`
+
+### Data Structure
+Each check-in stores:
+- Date and timestamp
+- Mood (text description)
+- Energy level (text description)
+- Stress/concerns (optional)
+- Objectives (array of 1-3 goals)
+- Additional notes (optional)
+- Auto-generated summary
 
 ## 📅 Challenge Progress
 
 - **Day 1**: ✅ Get Your Starter Voice Agent Running - [Repository Link](https://github.com/GhanshyamJha05/first_day_Task-Murf-AI-)
-- **Day 2**: ✅ Coffee Shop Barista Agent (+ Advanced Challenge) - **THIS REPOSITORY**
-- **Day 3**: 🔜 Coming soon...
+- **Day 2**: ✅ Coffee Shop Barista Agent (+ Advanced Challenge) - [Repository Link](https://github.com/GhanshyamJha05/Second_day_task_murfAI)
+- **Day 3**: ✅ Health & Wellness Voice Companion - **THIS REPOSITORY**
 - **Day 4**: 🔜 Coming soon...
 - **Day 5**: 🔜 Coming soon...
 - **Day 6**: 🔜 Coming soon...
