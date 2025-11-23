@@ -43,9 +43,9 @@ WELLNESS_LOG_FILE = Path("wellness_log.json")
 
 
 class Assistant(Agent):
-    def __init__(self) -> None:
-        super().__init__(
-            instructions="""You are a supportive, grounded health and wellness companion. 
+    def __init__(self, previous_context: str = "") -> None:
+        # Build instructions with previous context if available
+        base_instructions = """You are a supportive, grounded health and wellness companion. 
             You conduct daily check-ins with users about their mood, energy, and daily goals.
             
             Your role is to:
@@ -72,7 +72,12 @@ class Assistant(Agent):
             5. Recap: mood, energy, objectives, and confirm
             6. Use complete_checkin tool to save the data
             
-            Your responses should be natural, concise, and conversational.""",
+            Your responses should be natural, concise, and conversational."""
+        
+        full_instructions = base_instructions + previous_context
+        
+        super().__init__(
+            instructions=full_instructions,
         )
 
     @function_tool
@@ -84,6 +89,18 @@ class Assistant(Agent):
         """
         current_checkin["mood"] = mood
         logger.info(f"Mood set to: {mood}")
+        # Publish check-in update to frontend
+        try:
+            if current_room:
+                await current_room.local_participant.publish_data(
+                    json.dumps({
+                        "type": "checkin_update",
+                        "checkin": current_checkin
+                    }).encode(),
+                    topic="wellness-checkin"
+                )
+        except Exception as e:
+            logger.warning(f"Failed to publish checkin update: {e}")
         return f"I hear you're feeling {mood} today. Tell me, how's your energy level?"
     
     @function_tool
@@ -95,6 +112,18 @@ class Assistant(Agent):
         """
         current_checkin["energy"] = energy
         logger.info(f"Energy set to: {energy}")
+        # Publish check-in update to frontend
+        try:
+            if current_room:
+                await current_room.local_participant.publish_data(
+                    json.dumps({
+                        "type": "checkin_update",
+                        "checkin": current_checkin
+                    }).encode(),
+                    topic="wellness-checkin"
+                )
+        except Exception as e:
+            logger.warning(f"Failed to publish checkin update: {e}")
         return f"Got it, your energy is {energy}. Is there anything stressing you out or on your mind right now?"
     
     @function_tool
@@ -106,6 +135,18 @@ class Assistant(Agent):
         """
         current_checkin["stress"] = stress
         logger.info(f"Stress noted: {stress}")
+        # Publish check-in update to frontend
+        try:
+            if current_room:
+                await current_room.local_participant.publish_data(
+                    json.dumps({
+                        "type": "checkin_update",
+                        "checkin": current_checkin
+                    }).encode(),
+                    topic="wellness-checkin"
+                )
+        except Exception as e:
+            logger.warning(f"Failed to publish checkin update: {e}")
         return f"I understand. {stress} can definitely be challenging. What are 1-3 things you'd like to accomplish or focus on today?"
     
     @function_tool
@@ -118,6 +159,18 @@ class Assistant(Agent):
         if objective not in current_checkin["objectives"]:
             current_checkin["objectives"].append(objective)
         logger.info(f"Added objective: {objective}. Total objectives: {len(current_checkin['objectives'])}")
+        # Publish check-in update to frontend
+        try:
+            if current_room:
+                await current_room.local_participant.publish_data(
+                    json.dumps({
+                        "type": "checkin_update",
+                        "checkin": current_checkin
+                    }).encode(),
+                    topic="wellness-checkin"
+                )
+        except Exception as e:
+            logger.warning(f"Failed to publish checkin update: {e}")
         
         if len(current_checkin["objectives"]) >= 3:
             return f"Great! So you have: {', '.join(current_checkin['objectives'])}. That sounds like a solid plan. Would you like me to recap everything?"
@@ -133,6 +186,18 @@ class Assistant(Agent):
         """
         current_checkin["notes"] = note
         logger.info(f"Note added: {note}")
+        # Publish check-in update to frontend
+        try:
+            if current_room:
+                await current_room.local_participant.publish_data(
+                    json.dumps({
+                        "type": "checkin_update",
+                        "checkin": current_checkin
+                    }).encode(),
+                    topic="wellness-checkin"
+                )
+        except Exception as e:
+            logger.warning(f"Failed to publish checkin update: {e}")
         return f"Thanks for sharing that. I've noted it down."
     
     @function_tool
@@ -167,6 +232,20 @@ class Assistant(Agent):
                 json.dump(log_data, f, indent=2)
             
             logger.info(f"Check-in saved: {checkin_entry}")
+            
+            # Publish final check-in to frontend
+            try:
+                if current_room:
+                    await current_room.local_participant.publish_data(
+                        json.dumps({
+                            "type": "checkin_complete",
+                            "checkin": current_checkin
+                        }).encode(),
+                        topic="wellness-checkin"
+                    )
+                    logger.info("Published checkin_complete to frontend")
+            except Exception as e:
+                logger.warning(f"Failed to publish checkin complete: {e}")
             
             # Create recap
             objectives_text = ", ".join(current_checkin["objectives"]) if current_checkin["objectives"] else "no specific objectives"
@@ -280,10 +359,7 @@ async def entrypoint(ctx: JobContext):
     # await avatar.start(session, room=ctx.room)
 
     # Start the session, which initializes the voice pipeline and warms up the models
-    assistant = Assistant()
-    # Add previous context to instructions if available
-    if previous_context:
-        assistant.instructions += previous_context
+    assistant = Assistant(previous_context=previous_context)
     
     await session.start(
         agent=assistant,
