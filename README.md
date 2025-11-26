@@ -68,7 +68,7 @@ This agent answers company FAQs, handles conversations naturally, and captures h
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/GhanshyamJha05/fifth_day_Murf_api.git
+git clone https://github.com/vikasyadav097/AI-Voice-Agent-Challenge-Day-5-Simple-FAQ-SDR-Lead-Capture-Agent-
 cd fifth_day_Murf_api/ten-days-of-voice-agents-2025
 ```
 
