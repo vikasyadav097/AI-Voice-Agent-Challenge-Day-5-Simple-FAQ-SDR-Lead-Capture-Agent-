@@ -161,27 +161,7 @@ Visit → **[http://localhost:3000](http://localhost:3000)**
 
 ---
 
-# 💬 Example Conversation
 
-```
-SDR: "Hi! Welcome to Razorpay. What brings you here today?"
-
-You: "I'm looking for a payment gateway for my online store."
-
-SDR: "That's great! May I know your name?"
-
-You: "I'm John from TechStore."
-
-SDR: "Nice to meet you, John! What kind of products do you sell?"
-
-You: "Electronics. What are your pricing plans?"
-
-SDR: "Domestic cards cost 2%, UPI is free, and there are no setup fees!"
-
-You: "Sounds good. I'm ready to move forward."
-
-SDR: "Perfect! I've saved all your details and our team will reach out shortly."
-```
 
 ---
 
